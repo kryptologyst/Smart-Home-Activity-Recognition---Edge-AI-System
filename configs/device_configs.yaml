@@ -1,0 +1,82 @@
+# Edge Device Configurations
+
+# Raspberry Pi 4 Configuration
+raspberry_pi:
+  cpu_cores: 4
+  memory_gb: 4
+  max_freq_mhz: 1500
+  supported_runtimes:
+    - "tflite"
+    - "onnx"
+  recommended_batch_size: 1
+  power_consumption_w: 3.5
+  max_latency_ms: 100.0
+  max_model_size_mb: 10.0
+  max_memory_mb: 200.0
+  enable_quantization: true
+  quantization_bits: 8
+
+# Jetson Nano Configuration
+jetson_nano:
+  cpu_cores: 4
+  memory_gb: 4
+  gpu_cores: 128
+  max_freq_mhz: 1400
+  supported_runtimes:
+    - "tflite"
+    - "onnx"
+    - "tensorrt"
+  recommended_batch_size: 1
+  power_consumption_w: 10.0
+  max_latency_ms: 50.0
+  max_model_size_mb: 20.0
+  max_memory_mb: 500.0
+  enable_quantization: true
+  quantization_bits: 8
+
+# Android Device Configuration
+android:
+  cpu_cores: 8
+  memory_gb: 6
+  supported_runtimes:
+    - "tflite"
+    - "onnx"
+  recommended_batch_size: 1
+  power_consumption_w: 5.0
+  max_latency_ms: 30.0
+  max_model_size_mb: 5.0
+  max_memory_mb: 100.0
+  enable_quantization: true
+  quantization_bits: 8
+
+# iOS Device Configuration
+ios:
+  cpu_cores: 6
+  memory_gb: 4
+  supported_runtimes:
+    - "coreml"
+    - "onnx"
+  recommended_batch_size: 1
+  power_consumption_w: 4.0
+  max_latency_ms: 25.0
+  max_model_size_mb: 5.0
+  max_memory_mb: 100.0
+  enable_quantization: true
+  quantization_bits: 8
+
+# Desktop/Server Configuration
+desktop:
+  cpu_cores: 16
+  memory_gb: 32
+  supported_runtimes:
+    - "tflite"
+    - "onnx"
+    - "openvino"
+    - "tensorrt"
+  recommended_batch_size: 32
+  power_consumption_w: 100.0
+  max_latency_ms: 10.0
+  max_model_size_mb: 100.0
+  max_memory_mb: 2000.0
+  enable_quantization: false
+  quantization_bits: 32

@@ -1,0 +1,79 @@
+# Default Configuration for Smart Home Activity Recognition
+
+# Data configuration
+data:
+  num_samples_per_activity: 200
+  sequence_length: 100
+  num_sensors: 3
+  test_size: 0.2
+  random_seed: 42
+  noise_scale: 0.1
+  activities:
+    - "cooking"
+    - "sleeping"
+    - "walking"
+  sensor_baselines:
+    cooking: [1.0, 0.3, 0.8]
+    sleeping: [0.1, 0.05, 0.0]
+    walking: [0.6, 0.2, 0.5]
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+
+# Model configuration
+model:
+  conv_filters: 32
+  kernel_size: 3
+  pool_size: 2
+  dense_units: 64
+  num_classes: 3
+  epochs: 10
+  batch_size: 32
+  learning_rate: 0.001
+  optimizer: "adam"
+  model_dir: "models"
+  checkpoint_dir: "checkpoints"
+
+# Edge deployment configuration
+edge:
+  target_devices:
+    - "cpu"
+    - "tflite"
+    - "onnx"
+  enable_quantization: true
+  quantization_bits: 8
+  calibration_samples: 100
+  enable_pruning: true
+  pruning_ratio: 0.3
+  max_latency_ms: 50.0
+  max_model_size_mb: 5.0
+  max_memory_mb: 100.0
+
+# IoT communication configuration
+iot:
+  mqtt_broker: "localhost"
+  mqtt_port: 1883
+  mqtt_topic_prefix: "smart_home/sensors"
+  sampling_rate_hz: 1.0
+  buffer_size: 1000
+  enable_encryption: false
+  qos_level: 1
+
+# Evaluation configuration
+evaluation:
+  compute_accuracy: true
+  compute_latency: true
+  compute_memory: true
+  compute_energy: false
+  num_inference_runs: 1000
+  warmup_runs: 100
+  save_predictions: true
+  generate_plots: true
+  output_dir: "assets"
+
+# System settings
+device: "cpu"  # cpu, cuda, mps
+num_workers: 4
+log_level: "INFO"
+project_root: "."
+config_dir: "configs"
+assets_dir: "assets"
